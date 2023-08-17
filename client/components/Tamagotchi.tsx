@@ -1,7 +1,7 @@
 // Parameters: name, personality, img
 import { useState, useEffect } from 'react'
-import { TamagotchiContext } from "./App";
-import { useOutletContext } from "react-router-dom";
+import { TamagotchiContext } from './App'
+import { useOutletContext } from 'react-router-dom'
 
 // const attributeStates = {
 //   hunger: 100,
@@ -17,21 +17,25 @@ import { useOutletContext } from "react-router-dom";
 //}
 
 export default function Tamagotchi() {
+  const TIMER_INTERVAL = 1000
+  const TIMER_DECREMENT = 3
+  const STATUS_INCREMENT = 20
+
   const [hunger, setHunger] = useState(100)
   const [sleep, setSleep] = useState(100)
   const [exercise, setExercise] = useState(100)
   const [poo, setPoo] = useState(false)
 
-  const { tamagotchi } = useOutletContext<TamagotchiContext>();
+  const { tamagotchi } = useOutletContext<TamagotchiContext>()
 
   function handleFeedClick() {
-    setHunger(hunger + 10)
+    setHunger(hunger + STATUS_INCREMENT)
   }
   function handleExerciseClick() {
-    setExercise(exercise + 10)
+    setExercise(exercise + STATUS_INCREMENT)
   }
   function handleSleepClick() {
-    setSleep(sleep + 10)
+    setSleep(sleep + STATUS_INCREMENT)
   }
   function handlePooClick() {
     setPoo(false)
@@ -39,10 +43,25 @@ export default function Tamagotchi() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setHunger((prevProgress) => (prevProgress > 0 ? prevProgress - 1 : 0))
-      setExercise((prevProgress) => (prevProgress > 0 ? prevProgress - 1 : 0))
-      setSleep((prevProgress) => (prevProgress > 0 ? prevProgress - 1 : 0))
-    }, 1000)
+      setHunger((prevProgress) =>
+        prevProgress > 0 ? prevProgress - TIMER_DECREMENT : 0
+      )
+      setExercise((prevProgress) =>
+        prevProgress > 0 ? prevProgress - TIMER_DECREMENT : 0
+      )
+      setSleep((prevProgress) =>
+        prevProgress > 0 ? prevProgress - TIMER_DECREMENT : 0
+      )
+    }, TIMER_INTERVAL)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setPoo(!poo)
+    }, 20000)
     return () => {
       clearInterval(timer)
     }

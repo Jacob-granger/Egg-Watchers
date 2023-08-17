@@ -7,7 +7,7 @@ import Tamagotchi from './Tamagotchi.tsx'
 // Need state data from app
 
 export default function Home() {
-  const [tamagotchi, setTamagotchi] = useState(true)
+  const [tamagotchi, setTamagotchi] = useState(false)
 
   return (
     <>
