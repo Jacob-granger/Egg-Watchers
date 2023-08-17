@@ -39,14 +39,35 @@ body {
 .device {
   height: 600px;
   position: absolute;
-  top: 700px;
-  left: 200px;
+  top: 400px;
+  right: 50px;
 }
 
 .tamagotchi {
-  margin: 50px;
+  margin-top: 50px;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  width: 200px;
 }
 
 .statusBars {
-  margin: 50px;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  width: 40%;
+}
+
+.statusBar {
+  margin-left: 20px;
+}
+
+.button-container {
+  margin-top: 30px;
+}
+
+.tamagotchiContainer {
+  display: grid;
+  column-gap: 20px;
 }
