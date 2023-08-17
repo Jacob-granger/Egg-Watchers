@@ -40,18 +40,22 @@ body {
   height: 600px;
   position: absolute;
   top: 400px;
-  right: 50px;
+  right: 30%;
+  z-index: 1;
 }
 
 .tamagotchi {
-  margin-top: 50px;
+  margin-top: 280px;
+  margin-right: 60%;
   grid-column-start: 2;
   grid-column-end: 2;
   width: 200px;
+  z-index: 2;
 }
 
 .statusBars {
-  margin-top: 70px;
+  margin-top: 200px;
+  margin-left: 50px;
   display: flex;
   flex-direction: column;
   grid-column-start: 1;
@@ -70,4 +74,16 @@ body {
 .tamagotchiContainer {
   display: grid;
   column-gap: 20px;
+}
+
+.tamagotchis-images {
+  max-width: 120px;
+  max-height: 120px;
+  margin: 8px;
+}
+
+.tamagotchis-images:hover,
+.tamagotchi-selected {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
 }

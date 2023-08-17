@@ -1,5 +1,7 @@
 // Parameters: name, personality, img
 import { useState, useEffect } from 'react'
+import { TamagotchiContext } from './App'
+import { useOutletContext } from 'react-router-dom'
 
 // const attributeStates = {
 //   hunger: 100,
@@ -13,50 +15,43 @@ import { useState, useEffect } from 'react'
 // const name = event.target.name
 //  setState({...tamState,})
 //}
+
 export default function Tamagotchi() {
   const [hunger, setHunger] = useState(100)
   const [sleep, setSleep] = useState(100)
   const [exercise, setExercise] = useState(100)
   const [poo, setPoo] = useState(false)
 
+  const { tamagotchi } = useOutletContext<TamagotchiContext>()
+
   function handleFeedClick() {
-    setHunger(hunger + 20)
+    setHunger(hunger + 10)
   }
   function handleExerciseClick() {
-    setExercise(exercise + 50)
+    setExercise(exercise + 10)
   }
   function handleSleepClick() {
-    setSleep(100)
+    setSleep(sleep + 10)
   }
   function handlePooClick() {
     setPoo(false)
   }
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     console.log('Called after 1 sec!')
-  //     setExercise(exercise - 2)
-  //     setHunger(hunger - 2)
-  //     setSleep(sleep - 2)
-  //   }, 1000)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHunger((prevProgress) => (prevProgress > 0 ? prevProgress - 1 : 0))
+      setExercise((prevProgress) => (prevProgress > 0 ? prevProgress - 1 : 0))
+      setSleep((prevProgress) => (prevProgress > 0 ? prevProgress - 1 : 0))
+    }, 1000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
 
-  //   return () => clearTimeout(timeout)
-  // }, [])
-
-  // const timeout = setTimeout(() => {
-  //   console.log('Called after 1 sec!')
-  //   setExercise(exercise - 2)
-  //   setHunger(hunger - 2)
-  //   setSleep(sleep - 2)
-  // }, 1000)
-
-  // const timeoutPoo = setTimeout(() => {
-  //   setPoo(true)
-  // }, 10000)
+  console.log(tamagotchi.image)
 
   return (
     <div>
-      <div> I am not a gucci Tamagotchi. Pls feed me</div>
       <div className="button-container">
         <button className="rubber-button" onClick={handleFeedClick}>
           Feed
@@ -73,6 +68,7 @@ export default function Tamagotchi() {
       </div>
       <div className="tamagotchiContainer">
         <div className="statusBars">
+          <p>{tamagotchi && tamagotchi.name}</p>
           <label>
             Hunger
             <progress className="statusBar" value={hunger} max="100" />
@@ -87,7 +83,11 @@ export default function Tamagotchi() {
           </label>
           {poo ? <i className="fa-solid fa-poo"></i> : <div></div>}
         </div>
-        <img className="tamagotchi" src="images/memetchi.jpg" alt="memetchi" />
+        <img
+          className="tamagotchi"
+          src={`/images/${tamagotchi.image}`}
+          alt="memetchi"
+        />
       </div>
     </div>
   )
