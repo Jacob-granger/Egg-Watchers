@@ -1,8 +1,16 @@
-function App() {
+import { Outlet } from 'react-router-dom'
+
+export function App() {
   return (
     <div>
-      <h1>App</h1>
-      <p>React development has begun!</p>
+      <nav>
+        <a href="/">
+          <i className="fa-solid fa-house"></i>
+        </a>
+      </nav>
+      <h1>Egg Watchers</h1>
+      <p>Keep your lil bean alive</p>
+      <Outlet />
     </div>
   )
 }
