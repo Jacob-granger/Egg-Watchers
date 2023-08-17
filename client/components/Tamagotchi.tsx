@@ -18,7 +18,7 @@ import { useOutletContext } from 'react-router-dom'
 
 export default function Tamagotchi() {
   const TIMER_INTERVAL = 1000
-  const TIMER_DECREMENT = 3
+  const TIMER_DECREMENT = 30
   const STATUS_INCREMENT = 20
 
   const [hunger, setHunger] = useState(100)
@@ -26,7 +26,7 @@ export default function Tamagotchi() {
   const [exercise, setExercise] = useState(100)
   const [poo, setPoo] = useState(false)
 
-  const { tamagotchi } = useOutletContext<TamagotchiContext>()
+  const { tamagotchi, setTamagotchi } = useOutletContext<TamagotchiContext>()
 
   function handleFeedClick() {
     setHunger(hunger + STATUS_INCREMENT)
@@ -42,7 +42,7 @@ export default function Tamagotchi() {
   }
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const statusTimer = setInterval(() => {
       setHunger((prevProgress) =>
         prevProgress > 0 ? prevProgress - TIMER_DECREMENT : 0
       )
@@ -54,18 +54,30 @@ export default function Tamagotchi() {
       )
     }, TIMER_INTERVAL)
     return () => {
-      clearInterval(timer)
+      clearInterval(statusTimer)
     }
   }, [])
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const pooTimer = setInterval(() => {
       setPoo(!poo)
     }, 20000)
     return () => {
-      clearInterval(timer)
+      clearInterval(pooTimer)
     }
   }, [])
+
+  useEffect(() => {
+    const checkPulse = setInterval(() => {
+      if (hunger <= 0 && sleep <= 0 && exercise <= 0) {
+        console.log('Dead')
+        setTamagotchi(false)
+      }
+    }, 1000)
+    return () => {
+      clearInterval(checkPulse)
+    }
+  })
 
   console.log(tamagotchi.image)
 

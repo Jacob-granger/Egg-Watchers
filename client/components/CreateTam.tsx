@@ -1,22 +1,21 @@
-
-import { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
-import { Tamagotchi, TamagotchiContext } from "./App";
-import personalities from "../../data/personalities";
-import tamagotchis from "../../data/tamagotchis";
+import { useState } from 'react'
+import { useNavigate, useOutletContext } from 'react-router-dom'
+import { Tamagotchi, TamagotchiContext } from './App'
+import personalities from '../../data/personalities'
+import tamagotchis from '../../data/tamagotchis'
 
 // default form values
 const defaultValues = {
   name: '',
   image: '',
-  personality: {id: 1, name: 'Calm'}
+  personality: { id: 1, name: 'Calm' },
 }
 
 //CreateTam component
 const CreateTam = () => {
   // get setTamagotchi from the App component (via outlet context)
-  const { setTamagotchi } = useOutletContext<TamagotchiContext>();
-  const navigate = useNavigate();
+  const { setTamagotchi } = useOutletContext<TamagotchiContext>()
+  const navigate = useNavigate()
 
   // state to handle form data
   const [formData, setFormData] = useState<Tamagotchi>(defaultValues)
@@ -32,32 +31,36 @@ const CreateTam = () => {
 
   // handle changes in the select
   const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedPersonality = personalities.find(personality => personality.id === Number(event.target.value))
+    const selectedPersonality = personalities.find(
+      (personality) => personality.id === Number(event.target.value)
+    )
     setFormData({
       ...formData,
-      personality: selectedPersonality || defaultValues.personality
+      personality: selectedPersonality || defaultValues.personality,
     })
-  };
+  }
 
   // handle click on the image
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const img: HTMLButtonElement = event.currentTarget;
+    event.preventDefault()
+    const img: HTMLButtonElement = event.currentTarget
 
-    const selectedTamagotchy = tamagotchis.find(tamagotchy => tamagotchy.id === Number(img.id))
+    const selectedTamagotchy = tamagotchis.find(
+      (tamagotchy) => tamagotchy.id === Number(img.id)
+    )
     setFormData({
       ...formData,
-      'image': selectedTamagotchy?.image || ''
+      image: selectedTamagotchy?.image || '',
     })
-  };
+  }
 
-  // handle submission 
+  // handle submission
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     console.log(formData)
     setTamagotchi(formData)
-    navigate("/");
-  };
+    navigate('/')
+  }
 
   // form with input for name, selector for image and selector for personalities
   return (
@@ -72,22 +75,43 @@ const CreateTam = () => {
         onChange={handleChange}
         required
       />
-      
+
       <div>
         <label>
           Select Tamagotchi
-          {tamagotchis.map(tamagotch => <img className={`tamagotchis-images ${formData.image === tamagotch.image ? 'tamagotchi-selected' : ''}`} id={tamagotch.id} key={tamagotch.id} src={`/images/${tamagotch.image}`} alt={tamagotch.image} onClick={handleClick} />)}
+          {tamagotchis.map((tamagotch) => (
+            <img
+              className={`tamagotchis-images ${
+                formData.image === tamagotch.image ? 'tamagotchi-selected' : ''
+              }`}
+              id={tamagotch.id}
+              key={tamagotch.id}
+              src={`/images/${tamagotch.image}`}
+              alt={tamagotch.image}
+              onClick={handleClick}
+            />
+          ))}
         </label>
       </div>
 
       <label htmlFor="personality">Personality</label>
-      <select id="personality" onChange={selectChange} value={formData.personality.id}>
-        {personalities.map(personality =>  <option key={personality.id} value={personality.id}>{personality.name}</option>)}
+      <select
+        id="personality"
+        onChange={selectChange}
+        value={formData.personality.id}
+      >
+        {personalities.map((personality) => (
+          <option key={personality.id} value={personality.id}>
+            {personality.name}
+          </option>
+        ))}
       </select>
-      < br/>
-      <button className="rubber-button" type="submit">Create</button>
+      <br />
+      <button className="rubber-button" type="submit">
+        Create
+      </button>
     </form>
-  );
+  )
 }
 
 export default CreateTam
