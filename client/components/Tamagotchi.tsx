@@ -1,5 +1,7 @@
 // Parameters: name, personality, img
 import { useState, useEffect } from 'react'
+import { TamagotchiContext } from "./App";
+import { useOutletContext } from "react-router-dom";
 
 // const attributeStates = {
 //   hunger: 100,
@@ -19,6 +21,8 @@ export default function Tamagotchi() {
   const [sleep, setSleep] = useState(100)
   const [exercise, setExercise] = useState(100)
   const [poo, setPoo] = useState(false)
+
+  const { tamagotchi } = useOutletContext<TamagotchiContext>();
 
   function handleFeedClick() {
     setHunger(hunger + 10)
@@ -47,6 +51,8 @@ export default function Tamagotchi() {
   return (
     <div>
       <div> I am not a gucci Tamagotchi. Pls feed me</div>
+      <p>Homie Page</p>
+      <p>{tamagotchi && tamagotchi.name}</p>
       <img className="tamagotchi" src="/images/memetchi.jpg" alt="memetchi" />
       <div className="button-container">
         <button className="rubber-button" onClick={handleFeedClick}>

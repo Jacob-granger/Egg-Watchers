@@ -50,3 +50,14 @@ body {
 .statusBars {
   margin: 50px;
 }
+
+.tamagotchis-images {
+  max-width: 120px;
+  max-height: 120px;
+  margin: 8px;
+}
+
+.tamagotchis-images:hover, .tamagotchi-selected {
+  background: #e1e1e1;
+  border: 1px solid #d0d0d0;
+}
