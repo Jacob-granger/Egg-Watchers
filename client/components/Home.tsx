@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { TamagotchiContext } from './App'
+import { useOutletContext } from 'react-router-dom'
 
 import Egg from './Egg.tsx'
 import Tamagotchi from './Tamagotchi.tsx'
@@ -7,7 +9,7 @@ import Tamagotchi from './Tamagotchi.tsx'
 // Need state data from app
 
 export default function Home() {
-  const [tamagotchi, setTamagotchi] = useState(false)
+  const { tamagotchi } = useOutletContext<TamagotchiContext>()
 
   return (
     <>

@@ -39,16 +39,41 @@ body {
 .device {
   height: 600px;
   position: absolute;
-  top: 700px;
-  left: 200px;
+  top: 400px;
+  right: 30%;
+  z-index: 1;
 }
 
 .tamagotchi {
-  margin: 50px;
+  margin-top: 280px;
+  margin-right: 60%;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  width: 200px;
+  z-index: 2;
 }
 
 .statusBars {
-  margin: 50px;
+  margin-top: 200px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  width: 40%;
+}
+
+.statusBar {
+  margin-left: 20px;
+}
+
+.button-container {
+  margin-top: 30px;
+}
+
+.tamagotchiContainer {
+  display: grid;
+  column-gap: 20px;
 }
 
 .tamagotchis-images {
@@ -57,7 +82,8 @@ body {
   margin: 8px;
 }
 
-.tamagotchis-images:hover, .tamagotchi-selected {
+.tamagotchis-images:hover,
+.tamagotchi-selected {
   background: #e1e1e1;
   border: 1px solid #d0d0d0;
 }

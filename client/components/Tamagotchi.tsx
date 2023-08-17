@@ -67,12 +67,10 @@ export default function Tamagotchi() {
     }
   }, [])
 
+  console.log(tamagotchi.image)
+
   return (
     <div>
-      <div> I am not a gucci Tamagotchi. Pls feed me</div>
-      <p>Homie Page</p>
-      <p>{tamagotchi && tamagotchi.name}</p>
-      <img className="tamagotchi" src="/images/memetchi.jpg" alt="memetchi" />
       <div className="button-container">
         <button className="rubber-button" onClick={handleFeedClick}>
           Feed
@@ -87,20 +85,28 @@ export default function Tamagotchi() {
           Relieve
         </button>
       </div>
-      <div className="statusBars">
-        <label>
-          Hunger
-          <progress className="statusBar" value={hunger} max="100" />
-        </label>
-        <label>
-          Fitness
-          <progress className="statusBar" value={exercise} max="100" />
-        </label>
-        <label>
-          Energy
-          <progress className="statusBar" value={sleep} max="100" />
-        </label>
-        {poo ? <i className="fa-solid fa-poo"></i> : <div></div>}
+      <div className="tamagotchiContainer">
+        <div className="statusBars">
+          <p>{tamagotchi && tamagotchi.name}</p>
+          <label>
+            Hunger
+            <progress className="statusBar" value={hunger} max="100" />
+          </label>
+          <label>
+            Fitness
+            <progress className="statusBar" value={exercise} max="100" />
+          </label>
+          <label>
+            Energy
+            <progress className="statusBar" value={sleep} max="100" />
+          </label>
+          {poo ? <i className="fa-solid fa-poo"></i> : <div></div>}
+        </div>
+        <img
+          className="tamagotchi"
+          src={`/images/${tamagotchi.image}`}
+          alt="memetchi"
+        />
       </div>
     </div>
   )
