@@ -3,3 +3,50 @@ body {
   color: #0a1520;
   font-family: 'Poppins', sans-serif;
 }
+
+.rubber-button {
+  width: 150px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  /* background-color: #ffcc00; */
+  background-color: #00a9b5;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rubber-button:hover {
+  /* background-color: #ff9900; */
+  background-color: #006269;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rubber-button:active {
+  background-color: #ff6600;
+  transform: scale(0.95);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.device {
+  height: 600px;
+  position: absolute;
+  top: 700px;
+  left: 200px;
+}
+
+.tamagotchi {
+  margin: 50px;
+}
+
+.statusBars {
+  margin: 50px;
+}
