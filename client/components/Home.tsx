@@ -11,16 +11,5 @@ import Tamagotchi from './Tamagotchi.tsx'
 export default function Home() {
   const { tamagotchi } = useOutletContext<TamagotchiContext>()
 
-  return (
-    <>
-      <div>Homie Page</div>
-      <img
-        className="device"
-        src="/images/tama-device.png"
-        alt="tamagotchi device"
-      />
-      <br />
-      {tamagotchi ? <Tamagotchi /> : <Egg />}
-    </>
-  )
+  return <>{tamagotchi ? <Tamagotchi /> : <Egg />}</>
 }

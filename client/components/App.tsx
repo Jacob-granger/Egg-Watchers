@@ -18,13 +18,14 @@ export function App() {
   return (
     <div>
       <nav>
-        <a href="/">
-          <i className="fa-solid fa-house"></i>
+        <a className="home-button" href="/">
+          <i className="fa-solid fa-house" style={{ color: '#ea4484' }}></i>
         </a>
+        <h1 className="logo">Egg Watchers</h1>
       </nav>
-      <h1>Egg Watchers</h1>
-      <p>Keep your lil bean alive</p>
-      <Outlet context={{ tamagotchi, setTamagotchi }} />
+      <div className="body-div">
+        <Outlet context={{ tamagotchi, setTamagotchi }} />
+      </div>
     </div>
   )
 }

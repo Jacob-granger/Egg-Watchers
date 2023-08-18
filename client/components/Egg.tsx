@@ -1,10 +1,14 @@
 export default function Egg() {
   return (
     <div>
-      <a href="/create">
-        <button>Add a Tamagotchi</button>
-      </a>
-      <img src="/images/egg.jpeg" alt="tamagotchi egg" />
+      <p></p>
+
+      <div className="start-container">
+        <img src="/images/egg.png" alt="tamagotchi egg" className="tam-egg" />
+        <a href="/create">
+          <button className="add-button">Hatch</button>
+        </a>
+      </div>
     </div>
   )
 }
