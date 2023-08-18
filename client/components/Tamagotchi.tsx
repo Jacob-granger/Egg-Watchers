@@ -87,7 +87,7 @@ export default function Tamagotchi() {
       </div>
       <div className="tamagotchiContainer">
         <div className="statusBars">
-          <p>{tamagotchi && tamagotchi.name}</p>
+          <h3 className="tama-name">{tamagotchi && tamagotchi.name}</h3>
           <label>
             Hunger
             <progress className="statusBar" value={hunger} max="100" />
@@ -102,6 +102,11 @@ export default function Tamagotchi() {
           </label>
           {poo ? <i className="fa-solid fa-poo"></i> : <div></div>}
         </div>
+        <img
+          className="device"
+          src="/images/tama-device-no-background.png"
+          alt="tamagotchi device"
+        />
         <img
           className="tamagotchi"
           src={`/images/${tamagotchi.image}`}

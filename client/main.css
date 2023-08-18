@@ -1,7 +1,31 @@
 body {
   background-color: #faf8f1;
   color: #0a1520;
-  font-family: 'Poppins', sans-serif;
+  font-family: sans-serif;
+}
+.logo {
+  font-family: 'blood-stone', sans-serif;
+  color: rgb(243, 68, 132);
+  margin: 20px;
+  font-size: 50px;
+}
+
+.home-button {
+  margin: 15px;
+}
+
+nav {
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  text-align: center;
+  background: white;
+  color: white;
+  font-size: 40px;
+  top: 0;
+  left: 0;
 }
 
 .rubber-button {
@@ -14,7 +38,7 @@ body {
   border: none;
   border-radius: 8px;
   /* background-color: #ffcc00; */
-  background-color: #00a9b5;
+  background-color: rgb(230, 103, 150);
   color: #fff;
   text-align: center;
   cursor: pointer;
@@ -40,13 +64,14 @@ body {
   height: 600px;
   position: absolute;
   top: 400px;
-  right: 30%;
+  right: 20%;
   z-index: 1;
 }
 
 .tamagotchi {
-  margin-top: 280px;
-  margin-right: 60%;
+  position: absolute;
+  top: 600px;
+  right: 40%;
   grid-column-start: 2;
   grid-column-end: 2;
   width: 200px;
@@ -61,10 +86,14 @@ body {
   grid-column-start: 1;
   grid-column-end: 1;
   width: 40%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .statusBar {
   margin-left: 20px;
+  color: rgb(243, 68, 132);
 }
 
 .button-container {
@@ -86,4 +115,52 @@ body {
 .tamagotchi-selected {
   background: #e1e1e1;
   border: 1px solid #d0d0d0;
+}
+
+@font-face {
+  font-family: 'blood-stone';
+  src: url('../public/fonts/blood-stone.otf') format('opentype');
+}
+
+.background-img {
+  /* position: absolute; */
+  background-image: url('../public/images/background.png');
+  background-size: cover;
+  background-position-x: center;
+  background-repeat: no-repeat;
+}
+.tam-egg {
+  height: 200px;
+  /* justify-content: center; */
+}
+
+@font-face {
+  font-family: 'tamagotchi';
+  src: url('../public/fonts/tamagotchi.ttf') format('opentype');
+}
+
+button {
+  font-family: 'tamagotchi';
+  padding: 10px 5px 10px 5px;
+  border-radius: 10px;
+  background-color: rgb(230, 103, 150);
+}
+.add-button {
+  /* align-items: center; */
+}
+
+.start-container {
+  /* align-items: center; */
+  display: flex;
+  flex-direction: vertical;
+  justify-content: center;
+}
+
+.body-div {
+  margin-top: 200px;
+}
+
+.tama-name {
+  /* font-family: 'blood-stone'; */
+  color: rgb(243, 68, 132);
 }
