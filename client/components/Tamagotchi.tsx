@@ -17,8 +17,10 @@ import { useOutletContext } from 'react-router-dom'
 //}
 
 export default function Tamagotchi() {
+  const deathSound = new Audio('/sounds/death.wav')
+
   const TIMER_INTERVAL = 1000
-  const TIMER_DECREMENT = 30
+  const TIMER_DECREMENT = 5
   const STATUS_INCREMENT = 20
 
   const [hunger, setHunger] = useState(100)
@@ -71,6 +73,7 @@ export default function Tamagotchi() {
     const checkPulse = setInterval(() => {
       if (hunger <= 0 && sleep <= 0 && exercise <= 0) {
         console.log('Dead')
+        deathSound.play()
         setTamagotchi(false)
       }
     }, 1000)
@@ -100,30 +103,38 @@ export default function Tamagotchi() {
       <div className="tamagotchiContainer">
         <div className="statusBars">
           <h3 className="tama-name">{tamagotchi && tamagotchi.name}</h3>
-          <label>
-            Hunger
-            <progress className="statusBar" value={hunger} max="100" />
-          </label>
-          <label>
-            Fitness
-            <progress className="statusBar" value={exercise} max="100" />
-          </label>
-          <label>
-            Energy
-            <progress className="statusBar" value={sleep} max="100" />
-          </label>
-          {poo ? <i className="fa-solid fa-poo"></i> : <div></div>}
+          <div className="status">
+            <label className="statusLabel">
+              Hunger
+              <progress className="statusBar" value={hunger} max="100" />
+            </label>
+          </div>
+          <div className="status">
+            <label className="statusLabel">
+              Fitness
+              <progress className="statusBar" value={exercise} max="100" />
+            </label>
+          </div>
+          <div className="status">
+            <label className="statusLabel">
+              Energy
+              <progress className="statusBar" value={sleep} max="100" />
+            </label>
+          </div>
+          {poo ? <i className="fa-solid fa-poo fa-lg"></i> : <div></div>}
         </div>
-        <img
-          className="device"
-          src="/images/tama-device-no-background.png"
-          alt="tamagotchi device"
-        />
-        <img
-          className="tamagotchi"
-          src={`/images/${tamagotchi.image}`}
-          alt="memetchi"
-        />
+        <div className="device-parent">
+          <img
+            className="device"
+            src="/images/tama-device-no-background.png"
+            alt="tamagotchi device"
+          />
+          <img
+            className="tamagotchi"
+            src={`/images/${tamagotchi.image}`}
+            alt="memetchi"
+          />
+        </div>
       </div>
     </div>
   )

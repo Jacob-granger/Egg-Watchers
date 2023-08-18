@@ -11,10 +11,16 @@ body {
 }
 
 .home-button {
-  margin: 15px;
+  margin: 50 px;
+}
+
+.sound-button {
+  background: none;
+  border: none;
 }
 
 nav {
+  align-items: center;
   justify-content: center;
   position: fixed;
   width: 100%;
@@ -60,48 +66,42 @@ nav {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.device {
-  height: 600px;
-  position: absolute;
-  top: 400px;
-  right: 20%;
-  z-index: 1;
-}
-
-.tamagotchi {
-  position: absolute;
-  top: 600px;
-  right: 40%;
-  grid-column-start: 2;
-  grid-column-end: 2;
-  width: 200px;
-  z-index: 2;
-}
-
 .statusBars {
-  margin-top: 200px;
-  margin-left: 50px;
+  margin-top: 250px;
+  margin-left: 150px;
   display: flex;
   flex-direction: column;
   grid-column-start: 1;
   grid-column-end: 1;
-  width: 40%;
+  width: 400px;
   background-color: white;
   padding: 30px;
+  padding-top: 10px;
   border-radius: 10px;
+  align-items: flex-start;
 }
 
 .statusBar {
   margin-left: 20px;
   color: rgb(243, 68, 132);
+  width: 300px;
+}
+.status {
+  margin-bottom: 15px;
+}
+.statusLabel {
+  font-size: 20px;
 }
 
 .button-container {
+  justify-content: center;
+  display: flex;
   margin-top: 30px;
+  align-items: center;
 }
 
 .tamagotchiContainer {
-  display: grid;
+  display: flex;
   column-gap: 20px;
 }
 
@@ -132,7 +132,7 @@ select {
   font-size: 16px;
   background-color: #fff;
   color: #333;
-  max-width: 200px; 
+  max-width: 200px;
   margin-left: 16px;
 }
 
@@ -180,7 +180,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
-  text-align: center; 
+  text-align: center;
 }
 
 .centered-content {
@@ -209,10 +209,6 @@ select {
   background-position-x: center;
   background-repeat: no-repeat;
 }
-.tam-egg {
-  height: 200px;
-  /* justify-content: center; */
-}
 
 @font-face {
   font-family: 'tamagotchi';
@@ -224,16 +220,29 @@ button {
   padding: 10px 5px 10px 5px;
   border-radius: 10px;
   background-color: rgb(230, 103, 150);
-}
-.add-button {
-  /* align-items: center; */
+  border: 3px solid rgb(15, 1, 67);
 }
 
 .start-container {
-  /* align-items: center; */
   display: flex;
-  flex-direction: vertical;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tam-egg {
+  height: 350px;
+  animation: shakeLeftRight 2s ease-in-out infinite;
+}
+
+.hatch-link {
+  justify-content: center;
+}
+
+.hatch-button {
+  width: 200px;
+  height: 50px;
+  font-size: 1.5rem;
 }
 
 .body-div {
@@ -241,6 +250,43 @@ button {
 }
 
 .tama-name {
-  /* font-family: 'blood-stone'; */
   color: rgb(243, 68, 132);
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+@keyframes shakeLeftRight {
+  0%,
+  100% {
+    transform: translateX(-5%);
+  }
+  25%,
+  75% {
+    transform: translateX(5%);
+  }
+  50% {
+    transform: translateX(-5%);
+  }
+}
+.device-parent {
+  top: 0;
+  left: 0;
+}
+
+.device {
+  height: 600px;
+  position: absolute;
+  top: 400px;
+  right: 20%;
+  /* z-index: 1; */
+}
+
+.tamagotchi {
+  position: absolute;
+  top: 600px;
+  right: 30%;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  width: 200px;
+  /* z-index: 2; */
 }
