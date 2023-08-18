@@ -20,7 +20,7 @@ export default function Tamagotchi() {
   const deathSound = new Audio('/sounds/death.wav')
 
   const TIMER_INTERVAL = 1000
-  const TIMER_DECREMENT = 30
+  const TIMER_DECREMENT = 5
   const STATUS_INCREMENT = 20
 
   const [hunger, setHunger] = useState(100)
@@ -121,7 +121,7 @@ export default function Tamagotchi() {
               <progress className="statusBar" value={sleep} max="100" />
             </label>
           </div>
-          {poo ? <i className="fa-solid fa-poo"></i> : <div></div>}
+          {poo ? <i className="fa-solid fa-poo fa-lg"></i> : <div></div>}
         </div>
         <div className="device-parent">
           <img
