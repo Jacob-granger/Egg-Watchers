@@ -80,10 +80,90 @@ body {
   max-width: 120px;
   max-height: 120px;
   margin: 8px;
+  border-radius: 50%;
+  transition: transform 0.3s;
 }
 
 .tamagotchis-images:hover,
 .tamagotchi-selected {
   background: #e1e1e1;
-  border: 1px solid #d0d0d0;
+  border: 2px solid red;
+  transform: scale(1.2);
+}
+
+.label-form {
+  min-width: 160px;
+  font-size: 22px;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  max-width: 200px; 
+  margin-left: 16px;
+}
+
+.input-group {
+  margin-bottom: 24px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-group label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.styled-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.images-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  max-width: 190vh;
+  background-color: #00a9b5;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.centered-form {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center; 
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.hidden-message {
+  display: none;
+  color: red;
+  margin-top: 10px;
+}
+
+.show-message {
+  display: block;
 }
