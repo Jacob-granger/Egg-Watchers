@@ -99,8 +99,26 @@ const CreateTam = () => {
         </div>
 
         <div className="input-group">
+          <label htmlFor="personality" className="label-form">
+            Personality:
+          </label>
+          <select
+            id="personality"
+            className="styled-input"
+            onChange={selectChange}
+            value={formData.personality.id}
+          >
+            {personalities.map((personality) => (
+              <option key={personality.id} value={personality.id}>
+                {personality.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="input-group">
           <label className="label-form">
-            Select Tamagotchi
+            Choose Character:
             <div className="images-div">
               {tamagotchis.map((tamagotch) => (
                 <img
@@ -120,23 +138,6 @@ const CreateTam = () => {
           </label>
         </div>
 
-        <div className="input-group">
-          <label htmlFor="personality" className="label-form">
-            Personality:
-          </label>
-          <select
-            id="personality"
-            className="styled-input"
-            onChange={selectChange}
-            value={formData.personality.id}
-          >
-            {personalities.map((personality) => (
-              <option key={personality.id} value={personality.id}>
-                {personality.name}
-              </option>
-            ))}
-          </select>
-        </div>
         <button className="rubber-button" type="submit">
           Create
         </button>

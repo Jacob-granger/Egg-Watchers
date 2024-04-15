@@ -19,9 +19,9 @@ import { useOutletContext } from 'react-router-dom'
 export default function Tamagotchi() {
   const deathSound = new Audio('/sounds/death.wav')
 
-  const TIMER_INTERVAL = 1000
-  const TIMER_DECREMENT = 5
-  const STATUS_INCREMENT = 20
+  const TIMER_INTERVAL = 700
+  const TIMER_DECREMENT = 15
+  const STATUS_INCREMENT = 15
 
   const [hunger, setHunger] = useState(100)
   const [sleep, setSleep] = useState(100)
@@ -63,7 +63,7 @@ export default function Tamagotchi() {
   useEffect(() => {
     const pooTimer = setInterval(() => {
       setPoo(!poo)
-    }, 20000)
+    }, 8000)
     return () => {
       clearInterval(pooTimer)
     }
